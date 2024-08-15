@@ -15,6 +15,9 @@ jobs:
       v20:  ${{ steps.v.outputs.v20 }}
       v22:  ${{ steps.v.outputs.v22 }}
     steps:
+      - name: Install wget
+        run: sudo apt-get install wget
+
       - name: Get current date
         id: DATE
         run: |
