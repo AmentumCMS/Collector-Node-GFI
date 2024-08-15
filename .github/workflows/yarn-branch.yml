@@ -11,13 +11,34 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       Date: ${{ steps.date.outputs.date }}
+      v18:  ${{ steps.v18.outputs.v18 }}
+      v20:  ${{ steps.v20.outputs.v20 }}
+      v22:  ${{ steps.v22.outputs.v22 }}
     steps:
       - name: Get current date
         id: DATE
         run: |
-          echo "Setting Date"
+          echo "Getting Date"
           echo "DATE=$(date '+%Y%m%d-%H%M')" >> $GITHUB_OUTPUT
           echo -e "\nWrote to file:\n$GITHUB_OUTPUT\n"
+
+      - name: Get current v18 node versions
+        id: v18
+        run: |
+          echo "v18=$(curl -s https://nodejs.org/dist/latest-v18.x/ | grep -oP '18\.\d+\.\d+' | head -1)" >> $GITHUB_OUTPUT
+          
+      - name: Get current v20 node versions
+        id: v20
+        run: |
+          echo "v20=$(curl -s https://nodejs.org/dist/latest-v20.x/ | grep -oP '20\.\d+\.\d+' | head -1)" >> $GITHUB_OUTPUT
+      
+      - name: Get current node versions
+        id: v22
+        run: |
+          echo "v22=$(curl -s https://nodejs.org/dist/latest-v22.x/ | grep -oP '22\.\d+\.\d+' | head -1)" >> $GITHUB_OUTPUT
+
+      - name: Show outputs
+        run: |
           echo "Values:"
           cat $GITHUB_OUTPUT
 
