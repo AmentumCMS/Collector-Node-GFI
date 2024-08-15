@@ -199,15 +199,15 @@ jobs:
           echo -e "\nDownloading installers\n"
           mkdir -p ISO/runtimes
           cd ISO/runtimes
-          wget -nv -A '*x64.msi' https://nodejs.org/dist/latest-v18.x/
-          wget -nv -A '*x64.msi' https://nodejs.org/dist/latest-v20.x/
-          wget -nv -A '*x64.msi' https://nodejs.org/dist/latest-v22.x/
-          wget -nv -A '*win-x64.7z' https://nodejs.org/dist/latest-v18.x/
-          wget -nv -A '*win-x64.7z' https://nodejs.org/dist/latest-v20.x/
-          wget -nv -A '*win-x64.7z' https://nodejs.org/dist/latest-v22.x/
-          wget -nv -A '*linux-x64.tar.xz' https://nodejs.org/dist/latest-v18.x/
-          wget -nv -A '*linux-x64.tar.xz' https://nodejs.org/dist/latest-v20.x/
-          wget -nv -A '*linux-x64.tar.xz' https://nodejs.org/dist/latest-v22.x/
+          wget -nv -r -l1 -A '*x64.msi' https://nodejs.org/dist/latest-v18.x/
+          wget -nv -r -l1 -A '*x64.msi' https://nodejs.org/dist/latest-v20.x/
+          wget -nv -r -l1 -A '*x64.msi' https://nodejs.org/dist/latest-v22.x/
+          wget -nv -r -l1 -A '*win-x64.7z' https://nodejs.org/dist/latest-v18.x/
+          wget -nv -r -l1 -A '*win-x64.7z' https://nodejs.org/dist/latest-v20.x/
+          wget -nv -r -l1 -A '*win-x64.7z' https://nodejs.org/dist/latest-v22.x/
+          wget -nv -r -l1 -A '*linux-x64.tar.xz' https://nodejs.org/dist/latest-v18.x/
+          wget -nv -r -l1 -A '*linux-x64.tar.xz' https://nodejs.org/dist/latest-v20.x/
+          wget -nv -r -l1 -A '*linux-x64.tar.xz' https://nodejs.org/dist/latest-v22.x/
 
       - name: Copy Markdowns to ISO
         run: cp -v *.md ISO/
