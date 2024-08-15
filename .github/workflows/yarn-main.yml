@@ -17,9 +17,6 @@ jobs:
       v20:  ${{ steps.v.outputs.v20 }}
       v22:  ${{ steps.v.outputs.v22 }}
     steps:
-      - name: Install wget
-        run: sudo apt-get install wget
-
       - name: Get current date
         id: DATE
         run: |
@@ -32,7 +29,7 @@ jobs:
       - name: Get current node versions
         id: v
         run: |
-          Getting versions
+          echo -e "\nGetting versions"
           echo "v18=$(curl -s https://nodejs.org/dist/latest-v18.x/ | grep -oP 'v18\.\d+\.\d+' | head -1)" >> $GITHUB_OUTPUT
           echo "v20=$(curl -s https://nodejs.org/dist/latest-v20.x/ | grep -oP 'v20\.\d+\.\d+' | head -1)" >> $GITHUB_OUTPUT
           echo "v22=$(curl -s https://nodejs.org/dist/latest-v22.x/ | grep -oP 'v22\.\d+\.\d+' | head -1)" >> $GITHUB_OUTPUT
