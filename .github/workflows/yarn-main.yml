@@ -145,7 +145,7 @@ jobs:
 
   # DiffTOC:
   #   runs-on: ubuntu-latest
-  #   needs: [Setup, Collect]
+  #   needs: [Date, Collect]
   #   permissions:
   #     contents: write
   #     pull-requests: read
