@@ -201,15 +201,15 @@ jobs:
           echo -e "\nDownloading installers\n"
           mkdir -p ISO/runtimes
           cd ISO/runtimes
-          wget -nv -r -l1 -A '*x64.msi' https://nodejs.org/dist/latest-v18.x/
-          wget -nv -r -l1 -A '*x64.msi' https://nodejs.org/dist/latest-v20.x/
-          wget -nv -r -l1 -A '*x64.msi' https://nodejs.org/dist/latest-v22.x/
-          wget -nv -r -l1 -A '*win-x64.7z' https://nodejs.org/dist/latest-v18.x/
-          wget -nv -r -l1 -A '*win-x64.7z' https://nodejs.org/dist/latest-v20.x/
-          wget -nv -r -l1 -A '*win-x64.7z' https://nodejs.org/dist/latest-v22.x/
-          wget -nv -r -l1 -A '*linux-x64.tar.xz' https://nodejs.org/dist/latest-v18.x/
-          wget -nv -r -l1 -A '*linux-x64.tar.xz' https://nodejs.org/dist/latest-v20.x/
-          wget -nv -r -l1 -A '*linux-x64.tar.xz' https://nodejs.org/dist/latest-v22.x/
+          wget -nv -r -l1 -e robots=off -A '*x64.msi'  https://nodejs.org/dist/latest-v18.x/
+          wget -nv -r -l1 -e robots=off -A '*x64.msi'  https://nodejs.org/dist/latest-v20.x/
+          wget -nv -r -l1 -e robots=off -A '*x64.msi'  https://nodejs.org/dist/latest-v22.x/
+          wget -nv -r -l1 -e robots=off -A '*win-x64.7z' https://nodejs.org/dist/latest-v18.x/
+          wget -nv -r -l1 -e robots=off -A '*win-x64.7z' https://nodejs.org/dist/latest-v20.x/
+          wget -nv -r -l1 -e robots=off -A '*win-x64.7z' https://nodejs.org/dist/latest-v22.x/
+          wget -nv -r -l1 -e robots=off -A '*linux-x64.tar.xz' https://nodejs.org/dist/latest-v18.x/
+          wget -nv -r -l1 -e robots=off -A '*linux-x64.tar.xz' https://nodejs.org/dist/latest-v20.x/
+          wget -nv -r -l1 -e robots=off -A '*linux-x64.tar.xz' https://nodejs.org/dist/latest-v22.x/
 
       - name: Copy Markdowns to ISO
         run: cp -v *.md ISO/
@@ -294,7 +294,6 @@ jobs:
         run: |
           echo -e "Setup Yarn"
           sudo corepack enable
-          yarn set version 3.6.3
           echo -e "Configure Yarn for inaccessable network"
           npm set registry http://localhost:4873/
           yarn config set npmRegistryServer http://localhost:4873/
