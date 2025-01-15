@@ -40,6 +40,8 @@ Vagrant.configure("2") do |config|
   config.vm.provision "file", source: "~/.ssh", destination: ".ssh"
   config.vm.provision "file", source: "~/.gitconfig", destination: ".gitconfig"
 
+  config.vm.synced_folder "vscodeoffline", "/vagrant", type: "rsync"
+
   ############################################################################
   # Shell script provisioner                                                 #
   ############################################################################
