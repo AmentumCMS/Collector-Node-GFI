@@ -89,6 +89,7 @@ jobs:
       - name: Run yarn with verdaccio
         run: |
           export XDG_DATA_HOME=$PWD
+
           echo -e "\nRunning Verdaccio"
           yarn dlx verdaccio >\
             verdaccio/verdaccio.log 2>\
@@ -225,6 +226,11 @@ jobs:
 
       - name: Show Artifacts
         run: ls -Alh ISO/*tgz*
+
+      - name: ISO Table of contents
+        run: |
+          tree -a ISO/ \
+            | tee ISO/${{ vars.COLLECTOR }}-${{ needs.Setup.outputs.Date }}.iso.txt
 
       - name: Make ISO
         run: |
